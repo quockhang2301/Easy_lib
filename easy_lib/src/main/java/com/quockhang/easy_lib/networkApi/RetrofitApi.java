@@ -19,26 +19,27 @@ import retrofit2.http.Url;
 
 public class RetrofitApi implements INetApi {
     private final static RetrofitApi mInstance = new RetrofitApi();
-    private final Retrofit mRetrofit ;
+    private final Retrofit mRetrofit;
 
-    private RetrofitApi (){
+    private RetrofitApi() {
         Dispatcher dispatcher = new Dispatcher();
         dispatcher.setMaxRequests(PARALLEL_REQUEST);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(TIMEOUT,TimeUnit.MILLISECONDS)
+                .writeTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
                 .dispatcher(dispatcher)
                 .build();
 
-        mRetrofit =new Retrofit.Builder()
+        mRetrofit = new Retrofit.Builder()
                 .baseUrl("http://foobar")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .client(okHttpClient)
                 .build();
     }
-    public static RetrofitApi getmInstance (){
+
+    public static RetrofitApi getmInstance() {
         return mInstance;
     }
 
@@ -51,6 +52,6 @@ public class RetrofitApi implements INetApi {
 
         @FormUrlEncoded
         @POST
-        Call<ResponseBody> PostData(@Url String url,@FieldMap Map<String, String> params);
+        Call<ResponseBody> PostData(@Url String url, @FieldMap Map<String, String> params);
     }
 }
