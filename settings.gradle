@@ -1,0 +1,3 @@
+rootProject.name='Easy_lib'
+include ':app'
+include ':easy_lib'
