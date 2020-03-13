@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.quockhang.easy_lib.helpers.Simple_help;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     public static final int hell = 5;
 
     @Override
