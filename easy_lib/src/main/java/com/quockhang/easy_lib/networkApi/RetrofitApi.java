@@ -1,10 +1,17 @@
 package com.quockhang.easy_lib.networkApi;
 
 import com.quockhang.easy_lib.interfaces.INetApi;
+import com.quockhang.easy_lib.models.TransferPacket;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.core.SingleEmitter;
+import io.reactivex.rxjava3.core.SingleOnSubscribe;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
@@ -26,8 +33,8 @@ public class RetrofitApi implements INetApi {
         dispatcher.setMaxRequests(PARALLEL_REQUEST);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
+                .readTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.MILLISECONDS)
                 .dispatcher(dispatcher)
                 .build();
@@ -42,6 +49,17 @@ public class RetrofitApi implements INetApi {
     public static RetrofitApi getmInstance() {
         return mInstance;
     }
+
+    public Single<TransferPacket> asyncRequest(String url) {
+        return Single.create(new SingleOnSubscribe<TransferPacket>() {
+
+            @Override
+            public void subscribe(@NonNull SingleEmitter<TransferPacket> emitter) throws Throwable {
+
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
 
     protected interface IRetrofitService {
         @GET
