@@ -15,11 +15,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
+
     }
 
     buildTypes {
@@ -45,4 +49,8 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 }
