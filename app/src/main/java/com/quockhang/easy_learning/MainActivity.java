@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             Log.w("packet 1", packet + "");
 
         });
+
+
     }
 
     @Override
