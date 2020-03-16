@@ -18,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.w("easy", Simple_help.hello());
 
+
         btn_clickme = findViewById(R.id.btn_clickme);
         btn_clickme.setOnClickListener(view -> {
-            
+
         });
     }
 }
