@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mymodel = new ViewModelProvider(this).get(AbsBaseViewModel.class);
         //mymodel = new AbsBaseViewModel();
 
-        Log.w("easy", Simple_help.hello());
+        Log.w("easy edit", Simple_help.hello());
 
 
         btn_clickme = findViewById(R.id.btn_clickme);
